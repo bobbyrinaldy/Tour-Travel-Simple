@@ -1,4 +1,6 @@
 <?php
+
+// BACKEND
 Auth::routes();
 
 Route::group(['middleware' => 'admin'], function () {
@@ -11,6 +13,8 @@ Route::group(['middleware' => 'admin'], function () {
       Route::get('/', 'PackageController@index');
       Route::get('/create', 'PackageController@create');
       Route::post('/save', 'PackageController@save');
+      Route::get('/{id}/edit', 'PackageController@edit');
+      Route::put('/update/{id}', 'PackageController@update');
       Route::get('/{id}/delete', 'PackageController@delete');
 
 
@@ -36,4 +40,6 @@ Route::group(['middleware' => 'admin'], function () {
   });
 });
 
+// FRONTEND
 Route::get('/', 'HomeController@index');
+Route::get('/{id}/{nama}', 'PackageController@view');

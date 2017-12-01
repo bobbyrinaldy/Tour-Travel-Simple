@@ -6,7 +6,7 @@
 <script type="text/javascript">
   $(document).ready(function() {
     $('textarea').summernote({
-      placeholder:'Masukan Aktifitas per jam nya saja' ,
+      placeholder:'Masukan Informasi Mengenai Tempat Tujuan Seperti Sejarah atau Kegiatan Singkat nya' ,
       height: 400
     });
 
@@ -14,6 +14,7 @@
       format : 'HH:mm'
     });
   });
+
 </script>
 
 <script type="text/javascript">

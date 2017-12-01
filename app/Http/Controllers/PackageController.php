@@ -36,6 +36,7 @@ class PackageController extends Controller
       $p->nama_paket = $request->nama_paket;
       $p->tujuan = $request->tujuan;
       $p->harga = $request->harga;
+      $p->keterangan = $request->keterangan;
       $p->user_id = $request->petugas;
       $p->image = $foto_filename;
       $p->save();
@@ -45,12 +46,55 @@ class PackageController extends Controller
       return back();
     }
 
+    public function edit($id)
+    {
+      $data['p'] = Package::find($id);
+
+      return view('backend/paket/edit',$data);
+    }
+
+    public function update(Request $req,$id)
+    {
+      $this->validate($req, [
+        'image' => 'image',
+      ]);
+
+      $p = Package::find($id);
+
+
+
+      $p->nama_paket = $req->nama_paket;
+      $p->tujuan = $req->tujuan;
+      $p->keterangan = $req->keterangan;
+      $p->harga = $req->harga;
+
+      if (!empty($req->image)) {
+        $foto = $req->file('image');
+        $foto_file = $foto->getRealPath();
+        $foto_filename = $foto->getClientOriginalName();
+        Storage::put('public/paket/' . $foto_filename, file_get_contents($foto_file));
+        $p->image = $foto_filename;
+      }
+
+      $p->save();
+
+      return redirect('/admin/paket');
+
+    }
+
     public function delete($id)
     {
       $p = Package::find($id);
       $p->delete();
 
       return back();
+    }
+
+    public function view($id,$nama)
+    {
+      $data['p'] = Package::find($id);
+
+      return view('frontend/paket/index',$data);
     }
 
 }

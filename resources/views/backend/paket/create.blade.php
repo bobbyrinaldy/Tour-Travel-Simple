@@ -1,6 +1,7 @@
 @extends('layouts.backend.master')
 
 @section('content')
+@include('backend/editor/header')
   <div class="x_panel">
            <div class="x_title">
              <h2>Form Paket</h2>
@@ -49,6 +50,14 @@
                  </div>
                </div>
 
+                <div class="form-group">
+                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Keterangan <span class="required">*</span>
+                 </label>
+                 <div class="col-md-6 col-sm-6 col-xs-12">
+                   <textarea name="keterangan" class="form-control col-md-7 col-xs-12" rows="8" cols="80" id="keterangan"></textarea>
+                 </div>
+               </div>
+
 
                <div class="ln_solid"></div>
                <div class="form-group">
@@ -65,6 +74,8 @@
 @endsection
 
 @section('js')
+  @include('backend/editor/footer')
+
 <script type="text/javascript">
   $("#show_harga").on('keyup', function(){
 
