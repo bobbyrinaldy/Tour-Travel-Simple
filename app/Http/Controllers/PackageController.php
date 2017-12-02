@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Model\Package;
+use App\Model\Activities;
 use Storage;
 
 class PackageController extends Controller
@@ -90,9 +91,10 @@ class PackageController extends Controller
       return back();
     }
 
-    public function view($id,$nama)
+    public function view($id)
     {
-      $data['p'] = Package::find($id);
+      $data['p'] = Package::with('aktivitas')->where('id',$id)->first();
+      $data['total'] = Activities::where('package_id',$id)->groupBy('hari_ke')->pluck('hari_ke')->count();
 
       return view('frontend/paket/index',$data);
     }

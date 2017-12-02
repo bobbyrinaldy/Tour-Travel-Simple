@@ -11,6 +11,7 @@
 	<title>IQI TOUR & TRAVEL</title>
 
 	<link rel="stylesheet" href="{{asset('_user/css/style.css')}}" type="text/css" media="screen,projection,print" />
+	
 	<link rel="stylesheet" href="{{asset('_user/css/prettyPhoto.css')}}" type="text/css" media="screen" />
 	<link rel="shortcut icon" href="favicon.ico" />
 	
@@ -20,7 +21,7 @@
 	<header>
 		<div class="wrap clearfix">
 			<!--logo-->
-			<h1 class="logo"><a href="index.html" title="Book Your Travel - home"><img src="{{asset('_user/images/txt/logo.png')}}" alt="Book Your Travel" /></a></h1>
+			<h1 class="logo"><a href="/" title="Book Your Travel - home"><img src="{{asset('_user/images/txt/logo.png')}}" alt="Book Your Travel" /></a></h1>
 			<!--//logo-->
 			
 			<!--ribbon-->
@@ -28,11 +29,27 @@
 				<nav>
 					<ul class="profile-nav">
 						<li class="active"><a href="#" title="My Account">My Account</a></li>
-						<li><a href="login.html" title="Login">Login</a></li>
+						@guest
+							<li><a href="{{route('login')}}" title="Login">Login</a></li>
+						@endguest
+
+						@auth
+							<li>
+				                <a href="{{ route('logout') }}"
+				                    onclick="event.preventDefault();
+				                             document.getElementById('logout-form').submit();">
+				                    <span class="fa fa-sign-out"> Logout</span>
+				                </a>
+
+				                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+				                    {{ csrf_field() }}
+				                </form>
+				            </li>
+						@endauth
 						<li><a href="my_account.html" title="Settings">Settings</a></li>
 					</ul>
 					<ul class="lang-nav">
-						<li class="active"><a href="#" title="Merchant">Merchant</a></li>
+						<li class="active"><a href="#" title="Merchant">My Book</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -58,8 +75,8 @@
 		<!--main navigation-->
 		<nav class="main-nav" role="navigation" id="nav">
 			<ul class="wrap">
-				<li><a href="hotels.html" title="Home">Home</a></li>
-				<li><a href="hotels.html" title="Home">Paket Tour & Travel</a></li>
+				<li><a href="/" title="Home">Home</a></li>
+				<li><a href="#paket" title="Home" id="menu_paket">Paket Tour & Travel</a></li>
 				<li><a href="hotels.html" title="Home">About Us</a></li>
 				<li><a href="hotels.html" title="Home">Contact Us</a></li>
 				
@@ -70,33 +87,7 @@
 	<!--//header-->
 	
 	<!--slider-->
-	<section class="slider clearfix">
-		<div id="sequence">
-			<ul>
-				<li>
-					<div class="info animate-in" style="position: relative;top: 500px">
-						<h2>Last minute Winter escapes</h2><br />
-						<p>January 2013 holidays 40% off! An unique opportunity to realize your dreams</p>
-					</div>
-					<img class="main-image animate-in" src="{{asset('_user/images/slider/img.jpg')}}" alt="" />
-				</li>
-				<li>
-					<div class="info animate-in" style="position: relative;top: 500px">
-						<h2>Check out our top weekly deals</h2><br />
-						<p>Save Now. Book Later.</p>
-					</div>
-					<img class="main-image animate-in" src="{{asset('_user/images/slider/img.jpg')}}" alt="" />
-				</li>
-				<li>
-					<div class="info animate-in" style="position: relative;top: 500px">
-						<h2>Check out last minute flight, hotel &amp; vacation offers!</h2><br />
-						<p>Save up to 50%!</p>
-					</div>
-					<img class="main-image animate-in" src="{{asset('_user/images/slider/img.jpg')}}" alt="" />
-				</li>
-			</ul>
-		</div>
-	</section>
+	@yield('slider')
 	<!--//slider-->
 	
 	<!--search-->
@@ -104,419 +95,7 @@
 	
 	<!--main-->
 	<div class="main" role="main">
-		<div class="wrap clearfix">
-			<!--latest offers-->
-			<section class="offers clearfix full">
-				<h1>Explore our latest offers</h1>
-				
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="#" title=""><img src="{{asset('_user/images/uploads/img.jpg')}}" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<h4>Winter beach escapes 30% off</h4>
-						<a href="#" title="Explore our deals" class="gradient-button">Explore our deals</a>
-					</div>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="#" title=""><img src="{{asset('_user/images/uploads/img.jpg')}}" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<h4>Spend New Year‘s Eve in Paris</h4>
-						<a href="#" title="More info" class="gradient-button">More info</a>
-					</div>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="#" title=""><img src="{{asset('_user/images/uploads/img.jpg')}}" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<h4>Skiing weekends in the Alpes</h4>
-						<a href="#" title="Explore our deals" class="gradient-button">Explore our deals</a>
-					</div>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth last">
-					<figure><a href="#" title=""><img src="{{asset('_user/images/uploads/img.jpg')}}" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<h4>Our weekly top offer: Thailand</h4>
-						<a href="#" title="More info" class="gradient-button">More info</a>
-					</div>
-				</article>
-				<!--//column-->
-			</section>
-			<!--//latest offers-->
-			
-			<!--top destinations-->
-			<section class="destinations clearfix full">
-				<h1>Top destinations around the world</h1>
-				
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="location.html" title=""><img src="{{asset('_user/images/uploads/img.jpg')}}" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="location.html" title="View all" class="gradient-button">View all</a>
-						<h5>Paris</h5>
-						<span class="count">1529 Hotels</span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="hotels.html" title="View all">
-									<span class="small">from</span>
-									<span class="price">&#36; 70</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="flights.html" title="View all">
-									<span class="small">from</span>
-									<span class="price">&#36; 150</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="location.html" title=""><img src="{{asset('_user/images/uploads/img.jpg')}}" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="location.html" title="View all" class="gradient-button">View all</a>
-						<h5>Amsterdam</h5>
-						<span class="count">929 Hotels</span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="hotels.html" title="View all">
-									<span class="small">from</span>
-									<span class="price">&#36; 70</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="flights.html" title="View all">
-									<span class="small">from</span>
-									<span class="price">&#36; 150</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="location.html" title=""><img src="{{asset('_user/images/uploads/img.jpg')}}" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="location.html" title="View all" class="gradient-button">View all</a>
-						<h5>Saint Petersburg</h5>
-						<span class="count">658 Hotels</span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="hotels.html" title="View all">
-									<span class="small">from</span>
-									<span class="price">&#36; 70</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="flights.html" title="View all">
-									<span class="small">from</span>
-									<span class="price">&#36; 150</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth last">
-					<figure><a href="location.html" title=""><img src="{{asset('_user/images/uploads/img.jpg')}}" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="location.html" title="View all" class="gradient-button">View all</a>
-						<h5>Prague</h5>
-						<span class="count">829 Hotels</span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="hotels.html" title="View all">
-									<span class="small">from</span>
-									<span class="price">&#36; 70</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="flights.html" title="View all">
-									<span class="small">from</span>
-									<span class="price">&#36; 150</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="location.html" title=""><img src="{{asset('_user/images/uploads/img.jpg')}}" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="location.html" title="View all" class="gradient-button">View all</a>
-						<h5>Prague</h5>
-						<span class="count">829 Hotels</span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="hotels.html" title="View all">
-									<span class="small">from</span>
-									<span class="price">&#36; 70</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="flights.html" title="View all">
-									<span class="small">from</span>
-									<span class="price">&#36; 150</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth promo">
-					<div class="ribbon-small">- 20%</div>
-					<figure><a href="hot_deals.html" title=""><img src="{{asset('_user/images/uploads/img.jpg')}}" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="hot_deals.html" title="View all" class="gradient-button">View all</a>
-						<h5>Paris</h5>
-						<span class="count">1529 Hotels</span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="hotels.html" title="View all">
-									<span class="small">from</span>
-									<span class="price">&#36; 70</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="flights.html" title="View all">
-									<span class="small">from</span>
-									<span class="price">&#36; 150</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="location.html" title=""><img src="{{asset('_user/images/uploads/img.jpg')}}" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="location.html" title="View all" class="gradient-button">View all</a>
-						<h5>Amsterdam</h5>
-						<span class="count">929 Hotels</span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="hotels.html" title="View all">
-									<span class="small">from</span>
-									<span class="price">&#36; 70</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="flights.html" title="View all">
-									<span class="small">from</span>
-									<span class="price">&#36; 150</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth last">
-					<figure><a href="location.html" title=""><img src="{{asset('_user/images/uploads/img.jpg')}}" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="location.html" title="View all" class="gradient-button">View all</a>
-						<h5>Saint Petersburg</h5>
-						<span class="count">658 Hotels</span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="hotels.html" title="View all">
-									<span class="small">from</span>
-									<span class="price">&#36; 70</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="flights.html" title="View all">
-									<span class="small">from</span>
-									<span class="price">&#36; 150</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="location.html" title=""><img src="{{asset('_user/images/uploads/img.jpg')}}" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="location.html" title="View all" class="gradient-button">View all</a>
-						<h5>Saint Petersburg</h5>
-						<span class="count">658 Hotels</span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="hotels.html" title="View all">
-									<span class="small">from</span>
-									<span class="price">&#36; 70</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="flights.html" title="View all">
-									<span class="small">from</span>
-									<span class="price">&#36; 150</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="location.html" title=""><img src="{{asset('_user/images/uploads/img.jpg')}}" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="location.html" title="View all" class="gradient-button">View all</a>
-						<h5>Prague</h5>
-						<span class="count">829 Hotels</span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="hotels.html" title="View all">
-									<span class="small">from</span>
-									<span class="price">&#36; 70</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="flights.html" title="View all">
-									<span class="small">from</span>
-									<span class="price">&#36; 150</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="location.html" title=""><img src="{{asset('_user/images/uploads/img.jpg')}}" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="location.html" title="View all" class="gradient-button">View all</a>
-						<h5>Paris</h5>
-						<span class="count">1529 Hotels</span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="hotels.html" title="View all">
-									<span class="small">from</span>
-									<span class="price">&#36; 70</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="flights.html" title="View all">
-									<span class="small">from</span>
-									<span class="price">&#36; 150</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth last">
-					<figure><a href="location.html" title=""><img src="{{asset('_user/images/uploads/img.jpg')}}" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="location.html" title="View all" class="gradient-button">View all</a>
-						<h5>Amsterdam</h5>
-						<span class="count">929 Hotels</span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="hotels.html" title="View all">
-									<span class="small">from</span>
-									<span class="price">&#36; 70</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="flights.html" title="View all">
-									<span class="small">from</span>
-									<span class="price">&#36; 150</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
-			</section>
-			<!--//top destinations-->
-			
-			
-			<!--info boxes-->
-			<section class="boxes clearfix">
-				<!--column-->
-				<article class="one-fourth">
-					<h2>Handpicked Hotels</h2>
-					<p>All Book Your Travel Hotels fulfil strict selection criteria. Each hotel is chosen individually and inclusion cannot be bought. </p>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth">
-					<h2>Detailed Descriptions</h2>
-					<p>To give you an accurate impression of the hotel, we endeavor to publish transparent, balanced and precise hotel descriptions. </p>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth">
-					<h2>Exclusive Knowledge</h2>
-					<p>We’ve done our research. Our scouts are always busy finding out more about our hotels, the surroundings and activities on offer nearby.</p>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth last">
-					<h2>Passionate Service</h2>
-					<p>Book Your Travels’s team will cater to your special requests. We offer expert and passionate advice for finding the right hotel. </p>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth">
-					<h2>Best Price Guarantee</h2>
-					<p>We offer the best hotels at the best prices. If you find the same room category on the same dates cheaper elsewhere, we will refund the difference. Guaranteed, and quickly. </p>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth">
-					<h2>Secure Booking</h2>
-					<p>Book Your Travel reservation system is secure and your credit card and personal information is encrypted.<br />We work to high standards and guarantee your privacy. </p>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth">
-					<h2>Benefits for Hoteliers</h2>
-					<p>We provide a cost-effective model, a network of over 5000 partners and a personalised account management service to help you optimise your revenue.</p>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth last">
-					<h2>Any Questions?</h2>
-					<p>Call us on <em>1-555-555-555</em> for individual, tailored advice for your perfect stay or <a href="contact.html" title="Contact">send us a message</a> with your hotel booking query.<br /><br /></p>
-				</article>
-				<!--//column-->
-			</section>
-			<!--//info boxes-->
-		</div>
+		@yield('content')
 	</div>
 	<!--//main-->
 	
@@ -598,11 +177,59 @@
 	<script type="text/javascript" src="{{asset('_user/js/sequence.jquery-min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('_user/js/jquery.uniform.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('_user/js/jquery.prettyPhoto.js')}}"></script>
+	<script type="text/javascript" src="{{asset('_user/js/infobox.js')}}"></script>
 	<script type="text/javascript" src="{{asset('_user/js/sequence.js')}}"></script>
 	<script type="text/javascript" src="{{asset('_user/js/selectnav.js')}}"></script>
 	<script type="text/javascript" src="{{asset('_user/js/scripts.js')}}"></script>
 	<script type="text/javascript">	
 		$(document).ready(function(){
+			function initialize() {
+		var secheltLoc = new google.maps.LatLng(49.47216, -123.76307);
+
+		var myMapOptions = {
+			 zoom: 15
+			,center: secheltLoc
+			,mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		var theMap = new google.maps.Map(document.getElementById("map_canvas"), myMapOptions);
+
+
+		var marker = new google.maps.Marker({
+			map: theMap,
+			draggable: true,
+			position: new google.maps.LatLng(49.47216, -123.76307),
+			visible: true
+		});
+
+		var boxText = document.createElement("div");
+		boxText.innerHTML = "<strong>Best ipsum hotel</strong><br />1400 Pennsylvania Ave,<br />Washington DC<br />www.bestipsumhotel.com";
+
+		var myOptions = {
+			 content: boxText
+			,disableAutoPan: false
+			,maxWidth: 0
+			,pixelOffset: new google.maps.Size(-140, 0)
+			,zIndex: null
+			,closeBoxURL: ""
+			,infoBoxClearance: new google.maps.Size(1, 1)
+			,isHidden: false
+			,pane: "floatPane"
+			,enableEventPropagation: false
+		};
+
+		google.maps.event.addListener(marker, "click", function (e) {
+			ib.open(theMap, this);
+		});
+
+		var ib = new InfoBox(myOptions);
+		ib.open(theMap, marker);
+	}
+			
+			$("#menu_paket").click(function() {
+			    $('html, body').animate({
+			        scrollTop: $("#paket").offset().top
+			    }, 1500);
+			});
 			$(".form").hide();
 			$(".form:first").show();
 			$(".f-item:first").addClass("active");

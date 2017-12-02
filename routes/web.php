@@ -42,4 +42,4 @@ Route::group(['middleware' => 'admin'], function () {
 
 // FRONTEND
 Route::get('/', 'HomeController@index');
-Route::get('/{id}/{nama}', 'PackageController@view');
+Route::get('/post/detail/{id}', 'PackageController@view');
