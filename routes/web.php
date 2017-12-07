@@ -36,6 +36,16 @@ Route::group(['middleware' => 'admin'], function () {
 
     });
 
+    Route::group(['prefix' => 'booking'], function () {
+      Route::get('/', 'BookingController@indexAdmin');
+      Route::get('/create', 'BookingController@createAdmin');
+      Route::post('/save', 'BookingController@saveAdmin');
+      Route::get('/{id}/edit', 'BookingController@editAdmin');
+      Route::put('/update/{id}', 'BookingController@updateAdmin');
+      Route::get('/{id}/delete', 'BookingController@deleteAdmin');
+      Route::get('/{id}/view', 'BookingController@viewAdmin');
+    });
+
 
   });
 });
@@ -43,3 +53,5 @@ Route::group(['middleware' => 'admin'], function () {
 // FRONTEND
 Route::get('/', 'HomeController@index');
 Route::get('/post/detail/{id}', 'PackageController@view');
+Route::get('/book/{id}', 'BookingController@index');
+Route::post('/book/save', 'BookingController@save')->name('saveBooking');

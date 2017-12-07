@@ -49,6 +49,7 @@
                   <li><a href="/"><i class="fa fa-home"></i> Beranda </a></li>
                   <li><a href="/admin/user"><i class="fa fa-user"></i> Kelola User Login </a></li>
                   <li><a href="/admin/paket"><i class="fa fa-plane"></i> Kelola Paket Liburan </a></li>
+                  <li><a href="/admin/booking"><i class="fa fa-money"></i> Kelola Pemesanan </a></li>
 
                 </ul>
               </div>

@@ -10,4 +10,9 @@ class Package extends Model
     {
         return $this->hasMany('App\Model\Activities');
     }
+
+    public function booking()
+    {
+        return $this->hasMany('App\Model\Booking','id');
+    }
 }

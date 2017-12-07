@@ -33,12 +33,12 @@
                  </div>
                </div>
 
-               <div class="form-group">
+               {{-- <div class="form-group">
                  <label for="jam" class="control-label col-md-3 col-sm-3 col-xs-12">Jam (WIB)</label>
                  <div class="col-md-6 col-sm-6 col-xs-12">
                    <input id="jam" class="form-control col-md-7 col-xs-12" type="text" name="jam" placeholder="0">
                  </div>
-               </div>
+               </div> --}}
 
 
 

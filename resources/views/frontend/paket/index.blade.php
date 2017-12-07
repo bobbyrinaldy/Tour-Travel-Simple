@@ -33,7 +33,7 @@
 						<article>
 							<h1>{{$p->nama_paket}}</h1>
 							<div class="text-wrap">
-								<a href="#" class="gradient-button right" title="Book Now">Book Now</a>
+								<a href="/book/{{$p->id}}" class="gradient-button right" title="Book Now">Book Now</a>
 								<p>Anda dapat memesan kapanpun dengan tanggal dan waktu sesuai keinginan.</p>
 
 								<h3>6 Keuntungan Menggunakan Jasa Travel Agent</h3>
@@ -231,7 +231,7 @@
 					
 					<!--testimonials-->
 					<article class="default" style="padding-top: 10px;padding-bottom: 20px ">
-						<a href="#" class="gradient-button" title="Book This Travel" style="padding: 0 80px;">Book Now</a>
+						<a href="/book/{{$p->id}}" class="gradient-button" title="Book This Travel" style="padding: 0 80px;">Book Now</a>
 					</article>
 					<!--//testimonials-->
 					
