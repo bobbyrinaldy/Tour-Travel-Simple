@@ -30,7 +30,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="/" class="site_title"><img src="{{asset('/img/judul.png')}}" width='200px' height="40px" alt=""></i></a>
+              <a href="/" class="site_title"><img src="{{asset('/_admin/iqi_logo.png')}}" width='200px' height="40px" alt=""></i></a>
             </div>
 
             <div class="clearfix"></div>
@@ -46,10 +46,15 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="/"><i class="fa fa-home"></i> Beranda </a></li>
+                  <li><a href="/admin"><i class="fa fa-home"></i> Beranda </a></li>
                   <li><a href="/admin/user"><i class="fa fa-user"></i> Kelola User Login </a></li>
                   <li><a href="/admin/paket"><i class="fa fa-plane"></i> Kelola Paket Liburan </a></li>
-                  <li><a href="/admin/booking"><i class="fa fa-money"></i> Kelola Pemesanan </a></li>
+                  <li><a href="/admin/booking"><i class="fa fa-money"></i> Kelola Pemesanan Baru </a></li>
+                  <li><a href="/admin/booking/approve"><i class="fa fa-check"></i> Kelola Pemesanan Approve </a></li>
+                  <li><a href="/admin/booking/decline"><i class="fa fa-remove"></i> Kelola Pemesanan Decline </a></li>
+                  <li><a href="/admin/konfirmasi"><i class="fa fa-tasks"></i> Konfirmasi Pembayaran </a></li>
+                  <li><a href="/admin/report"><i class="fa fa-book"></i> Laporan Pendapatan</a></li>
+                  <li><a href="/admin/report/paket"><i class="fa fa-book"></i> Laporan Paket</a></li>
 
                 </ul>
               </div>
@@ -78,7 +83,7 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="/help">Help</a></li>
+                    <li><a href="/setting">Setting</a></li>
                     <li>
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
@@ -224,6 +229,14 @@
   <!-- Custom Theme Scripts -->
   <script src="{{asset('build/js/custom.js')}}"></script>
   <script type="text/javascript">
+        function n(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode>57 || charCode==45 || charCode==32 || (charCode>32 && charCode<=47)){
+                return false;
+            }
+            return true;
+        }
+
         tday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
         tmonth=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
 

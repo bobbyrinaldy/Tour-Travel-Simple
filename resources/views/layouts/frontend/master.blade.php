@@ -11,19 +11,19 @@
 	<title>IQI TOUR & TRAVEL</title>
 
 	<link rel="stylesheet" href="{{asset('_user/css/style.css')}}" type="text/css" media="screen,projection,print" />
-	
+
 	<link rel="stylesheet" href="{{asset('_user/css/prettyPhoto.css')}}" type="text/css" media="screen" />
 	<link rel="shortcut icon" href="favicon.ico" />
-	
+
 </head>
 <body>
 	<!--header-->
 	<header>
 		<div class="wrap clearfix">
 			<!--logo-->
-			<h1 class="logo"><a href="/" title="Book Your Travel - home"><img src="{{asset('_user/images/txt/logo.png')}}" alt="Book Your Travel" /></a></h1>
+			<h1 class="logo"><a href="/" title="Book Your Travel - home"><img src="{{asset('_user/images/iqi.png')}}" width="100px" alt="Book Your Travel"  /></a></h1>
 			<!--//logo-->
-			
+
 			<!--ribbon-->
 			<div class="ribbon">
 				<nav>
@@ -46,24 +46,27 @@
 				                </form>
 				            </li>
 						@endauth
-						<li><a href="my_account.html" title="Settings">Settings</a></li>
+						<li><a href="/setting" title="Settings">Settings</a></li>
 					</ul>
+					@guest
 					<ul class="lang-nav">
-						<li class="active"><a href="#" title="Merchant">My Book</a></li>
+						<li class="active"><a href="/register" title="Merchant">Register</a></li>
 					</ul>
+					@endguest
+
 				</nav>
 			</div>
 			<!--//ribbon-->
-			
+
 			<!--search-->
 			<div class="search">
 				<form id="search-form" method="get" action="search-form">
-					<input type="search" placeholder="Search entire site here" name="site_search" id="site_search" /> 
+					<input type="search" placeholder="Search entire site here" name="site_search" id="site_search" />
 					<input type="submit" id="submit-site-search" value="submit-site-search" name="submit-site-search"/>
 				</form>
 			</div>
 			<!--//search-->
-			
+
 			<!--contact-->
 			<div class="contact">
 				<span>24/7 Support number</span>
@@ -71,7 +74,7 @@
 			</div>
 			<!--//contact-->
 		</div>
-		
+
 		<!--main navigation-->
 		<nav class="main-nav" role="navigation" id="nav">
 			<ul class="wrap">
@@ -79,38 +82,38 @@
 				<li><a href="#paket" title="Home" id="menu_paket">Paket Tour & Travel</a></li>
 				<li><a href="hotels.html" title="Home">About Us</a></li>
 				<li><a href="hotels.html" title="Home">Contact Us</a></li>
-				
+
 			</ul>
 		</nav>
 		<!--//main navigation-->
 	</header>
 	<!--//header-->
-	
+
 	<!--slider-->
 	@yield('slider')
 	<!--//slider-->
-	
+
 	<!--search-->
 	=
-	
+
 	<!--main-->
 	<div class="main" role="main">
 		@yield('content')
 	</div>
 	<!--//main-->
-	
+
 	<!--footer-->
 	<footer>
 		<div class="wrap clearfix">
 			<!--column-->
 			<article class="one-fourth">
-				<h3>Book Your Travel</h3>
-				<p>1400 Pennsylvania Ave. Washington, DC</p>
+				<h3>IQI TOUR AND TRAVEL</h3>
+				<p>Jl.WastukencanaNo.05,Bandung, WestJava, Indonesia.</p>
 				<p><em>P:</em> 24/7 customer support: 1-555-555-5555</p>
 				<p><em>E:</em> <a href="#" title="booking@mail.com">booking@mail.com</a></p>
 			</article>
 			<!--//column-->
-			
+
 			<!--column-->
 			<article class="one-fourth">
 				<h3>Customer support</h3>
@@ -122,7 +125,7 @@
 				</ul>
 			</article>
 			<!--//column-->
-			
+
 			<!--column-->
 			<article class="one-fourth">
 				<h3>Follow us</h3>
@@ -138,7 +141,7 @@
 				</ul>
 			</article>
 			<!--//column-->
-			
+
 			<!--column-->
 			<article class="one-fourth last">
 				<h3>Don’t miss our exclusive offers</h3>
@@ -150,9 +153,9 @@
 				</form>
 			</article>
 			<!--//column-->
-			
+
 			<section class="bottom">
-				<p class="copy">Copyright 2012 Book your travel ltd. All rights reserved</p>
+				<p class="copy">Copyright 2017. All rights reserved</p>
 				<nav>
 					<ul>
 						<li><a href="#" title="About us">About us</a></li>
@@ -169,7 +172,7 @@
 		</div>
 	</footer>
 	<!--//footer-->
-	
+
 </body>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
@@ -181,7 +184,7 @@
 	<script type="text/javascript" src="{{asset('_user/js/sequence.js')}}"></script>
 	<script type="text/javascript" src="{{asset('_user/js/selectnav.js')}}"></script>
 	<script type="text/javascript" src="{{asset('_user/js/scripts.js')}}"></script>
-	<script type="text/javascript">	
+	<script type="text/javascript">
 		$(document).ready(function(){
 			function initialize() {
 		var secheltLoc = new google.maps.LatLng(49.47216, -123.76307);
@@ -224,7 +227,7 @@
 		var ib = new InfoBox(myOptions);
 		ib.open(theMap, marker);
 	}
-			
+
 			$("#menu_paket").click(function() {
 			    $('html, body').animate({
 			        scrollTop: $("#paket").offset().top

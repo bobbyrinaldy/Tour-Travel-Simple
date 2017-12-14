@@ -24,25 +24,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body class="bg agileinfo">
    <h1 class="agile_head text-center">IQI Tour & Travel Book Page</h1>
      <div class="container w3">
-		<form method="post" class="agile_form" id='form-book' action="{{route('saveBooking')}}">
+		<form class="agile_form" id='form-book'>
 			 {{ csrf_field() }}
 			<div class="clear"></div>
+			<h2 style="color: white">Keterangan Paket :</h2>
 			<input type="hidden" placeholder="Nama Paket" name="id_paket" class="name agileits" required="" value="{{$paket->id}}" readonly="" />
 			<input type="text" placeholder="Nama Paket" name="paket" class="name agileits" required="" value="{{$paket->nama_paket}}" readonly="" />
 			<input type="text" placeholder="Nama Paket" name="" class="name agileits" required="" value="Rp. {{number_format($paket->harga)}}" readonly="" />
-			<input type="hidden" placeholder="Nama Paket" name="harga" class="name agileits" required="" value="{{$paket->harga}}" readonly="" />
+			<input type="hidden" placeholder="Nama Paket" name="harga" id="harga" class="name agileits" required="" value="{{$paket->harga}}" readonly="" />
 			<input type="text" placeholder="Nama Paket" name="tujuan" class="name agileits" required="" value="{{$paket->tujuan}}" readonly="" />
 
 			<hr>
+			<h2 style="color: white">Pemesan :</h2>
 			<input type="text" placeholder="Your Name" name="name" class="name agileits" required="" value="{{Auth::user()->name}}" />
 			<input type="hidden" placeholder="Your Name" name="id_user" class="name agileits" required="" value="{{Auth::user()->id}}" />
 			<div class="list_agileits_w3layouts">
 
 			<input placeholder="Date" class="date" id="datepicker" type="text" name="date" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required=""/>	
-					<input type="text" placeholder="Jumlah Pemesanan" name="jumlah" class="name agileits" required="" value="" />
+					<input type="text" placeholder="Jumlah Pemesanan" name="jumlah" onkeypress="return n(event)" id="jumlah" class="name agileits" required="" value="" />
 				
 				<div class="clear"></div>
-            </div>				
+            </div>
+            <hr>
+            <label style="color:white">Total Bayar</label>
+            <label style="position: relative;left: 210px; color: white">Rp. <span id="total"></span></label>				
 			<div class="submit">
 			  <input type="submit" value="submit" id='submit'>
 			</div>  
@@ -56,6 +61,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<script src="{{asset('book/js/jquery-ui.js')}}"></script>
 		<script src="{{asset('https://unpkg.com/sweetalert2@7.0.7/dist/sweetalert2.all.js')}}"></script>
 			<script>
+
+				function n(evt) {
+				    var charCode = (evt.which) ? evt.which : event.keyCode
+				    if (charCode>57 || charCode==45 || charCode==32 || (charCode>32 && charCode<=47)){
+				        return false;        
+				    }
+				    return true;
+				}
+
+				$("#jumlah").keyup(function(){
+					var harga = $('#harga').val();
+					var val = $(this).val();
+					var total = harga*val;
+				    $('#total').html(total.toLocaleString());
+				});
+
 				$(function() {
 					$( "#datepicker,#datepicker1" ).datepicker({
 						dateFormat: "yy-mm-dd",
@@ -65,15 +86,46 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					});
 				});
 
-				$("#submit").click(function(){
-				    swal({
-					  position: 'middle',
-					  type: 'success',
-					  title: 'Silahkan cek email anda untuk melanjutkan pemesanan',
-					  showConfirmButton: false,
-					  timer: 2000
-					})
-				});
+				$('#form-book').submit( function(event) {
+				    event.preventDefault();
+
+				    $.ajax({
+				               type: "POST",
+				               url: '{{route('saveBooking')}}',
+				               data: $(this).serialize(),
+				               beforeSend : function(){
+				               		swal({
+				               		  title: 'Pesanan anda sedang di proses!',
+				               		  text: 'Please Wait...',
+				               		  timer: 5000,
+				               		  onOpen: () => {
+				               		    swal.showLoading()
+				               		  }
+				               		}).then((result) => {
+				               		  if (result.dismiss === 'timer') {
+				               		    swal({
+				               		      position: 'middle',
+				               		      type: 'success',
+				               		      title: 'Good!',
+				               		      showConfirmButton: false,
+				               		      timer: 2000
+				               		    })
+				               		  }
+				               		})
+				               },
+				               success: function( data ) {
+				                   swal({
+				               		      position: 'middle',
+				               		      type: 'success',
+				               		      title: 'Your reservation has been saved, please check email for 3x24 hour',
+				               		      showConfirmButton: false,
+				               		      timer: 2000
+				               		    })
+				                   setTimeout(function(){ location.replace('/') }, 3000);
+				               }
+				           });
+				}); 
+
 			</script>
 <!-- /End-date-piker -->		
 </body>

@@ -26,7 +26,7 @@ class ActivitiesController extends Controller
 
     public function create($id)
     {
-      $data['paket_id'] = $id;
+      $data['paket'] = Package::find($id);
 
       return view('/backend/paket/aktivitas/create',$data);
     }
@@ -50,6 +50,7 @@ class ActivitiesController extends Controller
     public function edit($id_paket,$id_aktivitas)
     {
       $data['aktivitas'] = Activities::find($id_aktivitas);
+      $data['paket'] = Package::find($id_paket);
 
       return view('/backend/paket/aktivitas/edit',$data);
     }

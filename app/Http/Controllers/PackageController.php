@@ -12,7 +12,7 @@ class PackageController extends Controller
 {
     public function index()
     {
-      $data['p'] = Package::all();
+      $data['p'] = Package::with('user')->get();
       return view('/backend/paket/index',$data);
     }
 
@@ -93,7 +93,7 @@ class PackageController extends Controller
 
     public function view($id)
     {
-      $data['p'] = Package::with('aktivitas')->where('id',$id)->first();
+      $data['p'] = Package::with('aktivitas','hotel')->where('id',$id)->first();
       $data['total'] = Activities::where('package_id',$id)->groupBy('hari_ke')->pluck('hari_ke')->count();
 
       return view('frontend/paket/index',$data);

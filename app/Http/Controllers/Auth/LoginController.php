@@ -16,8 +16,8 @@ class LoginController extends Controller
       {
         if (auth::user()->status == 'admin') {
           return '/admin';
-        }elseif (auth::user()->status == 'user') {
-          return '/user';
+        }else {
+          return '/';
         }
       }
 

@@ -16,7 +16,10 @@
                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nama">Nama Paket <span class="required">*</span>
                  </label>
                  <div class="col-md-6 col-sm-6 col-xs-12">
-                   <input type="text" id="nama" name="paket_id" value="{{$aktivitas->package_id}}" required="required" class="form-control col-md-7 col-xs-12" readonly>
+                   <input type="text" id="" name="" value="{{$paket->nama_paket}}" required="required" class="form-control col-md-7 col-xs-12" readonly>
+                 </div>
+                 <div class="col-md-6 col-sm-6 col-xs-12">
+                   <input type="hidden" id="nama" name="paket_id" value="{{$aktivitas->package_id}}" required="required" class="form-control col-md-7 col-xs-12" readonly>
                  </div>
                </div>
                <div class="form-group">

@@ -26,7 +26,7 @@ class HotelController extends Controller
 
     public function create($id)
     {
-      $data['paket_id'] = $id;
+      $data['paket'] = Package::find($id);
 
       return view('/backend/paket/hotel/create',$data);
     }
@@ -48,6 +48,8 @@ class HotelController extends Controller
     public function edit($id_paket,$id_hotel)
     {
       $data['hotel'] = Hotel::find($id_hotel);
+      $data['paket'] = Package::find($id_paket);
+      
 
       return view('/backend/paket/hotel/edit',$data);
     }

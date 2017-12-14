@@ -33,7 +33,9 @@
 						<article>
 							<h1>{{$p->nama_paket}}</h1>
 							<div class="text-wrap">
-								<a href="/book/{{$p->id}}" class="gradient-button right" title="Book Now">Book Now</a>
+								@auth
+									<a href="/book/{{$p->id}}" class="gradient-button right" title="Book Now">Book Now</a>
+								@endauth
 								<p>Anda dapat memesan kapanpun dengan tanggal dan waktu sesuai keinginan.</p>
 
 								<h3>6 Keuntungan Menggunakan Jasa Travel Agent</h3>
@@ -111,6 +113,25 @@
 							<h1>Internet</h1>
 							<div class="text-wrap">	
 								<p><strong>Free!</strong> WiFi is available in all areas and is free of charge. </p>
+							</div>
+
+							<h1>Hotel</h1>
+							<div class="text-wrap">	
+								<table>
+									<thead>
+										<th>Nama Hotel</th>
+										<th>Harga (/Pax)</th>
+									</thead>
+								<tbody>
+									@foreach ($p->hotel as $item)
+										<tr>
+											<td>{{$item->nama}}</td>
+											<td>Rp. {{number_format($item->harga)}}</td>
+										</tr>
+									@endforeach
+								</tbody>
+								</table>
+
 							</div>
 							
 						</article>
@@ -230,9 +251,11 @@
 					<!--//hotel details-->
 					
 					<!--testimonials-->
+					@auth
 					<article class="default" style="padding-top: 10px;padding-bottom: 20px ">
 						<a href="/book/{{$p->id}}" class="gradient-button" title="Book This Travel" style="padding: 0 80px;">Book Now</a>
 					</article>
+					@endauth
 					<!--//testimonials-->
 					
 					<!--Need Help Booking?-->

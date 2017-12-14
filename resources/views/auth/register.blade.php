@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+  <pre style="color:red;text-align:center">Harap gunakan email aktif , karena segala transaksi yang berlangsung harus di konfirmasi melalui email anda !</pre>
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
