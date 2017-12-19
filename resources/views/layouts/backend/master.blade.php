@@ -52,7 +52,7 @@
                   <li><a href="/admin/booking"><i class="fa fa-money"></i> Kelola Pemesanan Baru </a></li>
                   <li><a href="/admin/booking/approve"><i class="fa fa-check"></i> Kelola Pemesanan Approve </a></li>
                   <li><a href="/admin/booking/decline"><i class="fa fa-remove"></i> Kelola Pemesanan Decline </a></li>
-                  <li><a href="/admin/konfirmasi"><i class="fa fa-tasks"></i> Konfirmasi Pembayaran </a></li>
+
                   <li><a href="/admin/report"><i class="fa fa-book"></i> Laporan Pendapatan</a></li>
                   <li><a href="/admin/report/paket"><i class="fa fa-book"></i> Laporan Paket</a></li>
 
