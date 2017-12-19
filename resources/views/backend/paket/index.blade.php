@@ -41,7 +41,7 @@ Kelola Paket Liburan
                               <td><center><img src="{{Storage::url('paket/'.$item->image)}}" width="100px"alt=""></center></td>
                               <td>{{ $item->user->name }}</td>
                               <td width="15%" style="text-align:center;">
-                                <a href="/admin/paket/aktivitas/{{$item->id}}" class="btn btn-primary btn-xs btn-simple" data-toggle="tooltip" data-placement="top" title="Lihat Aktivitas"><span class="fa fa-calendar-times-o"></span></a>
+                                {{-- <a href="/admin/paket/aktivitas/{{$item->id}}" class="btn btn-primary btn-xs btn-simple" data-toggle="tooltip" data-placement="top" title="Lihat Aktivitas"><span class="fa fa-calendar-times-o"></span></a> --}}
                                 <a href="/admin/paket/hotel/{{$item->id}}" class="btn btn-info btn-xs btn-simple" data-toggle="tooltip" data-placement="top" title="Lihat Hotel"><span class="fa fa-home"></span></a>
                                 <a href="/admin/paket/{{$item->id}}/edit" class="btn btn-warning btn-xs btn-simple" data-toggle="tooltip" data-placement="top" title="Edit"><span class="fa fa-pencil"></span></a>
                                 <a href="/admin/paket/{{$item->id}}/delete" class="btn btn-danger btn-xs btn-simple" data-toggle="tooltip" data-placement="top" title="Hapus"><span class="fa fa-trash"></span></a>

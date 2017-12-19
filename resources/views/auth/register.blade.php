@@ -77,6 +77,17 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group">
+                            <label for="password-confirm" class="col-md-4 control-label"></label>
+
+                            <div class="col-md-6">
+                                <div class="g-recaptcha" data-sitekey="6LfW1DsUAAAAAL_JnwLjdZeebKYC3cLrhL423mR5"></div>
+                            </div>
+                        </div>
+
+                        
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">

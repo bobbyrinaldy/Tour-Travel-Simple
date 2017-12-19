@@ -23,7 +23,7 @@
 							<li class="availability"><a href="#availability" title="Availability">Availability</a></li>
 							<li class="description"><a href="#description" title="Description">Description</a></li>
 							<li class="facilities"><a href="#facilities" title="Facilities">Facilities</a></li>
-							<li class="things-to-do"><a href="#things-to-do" title="Things to do">Schedule</a></li>
+							{{-- <li class="things-to-d{{ $item->nama }}o"><a href="#things-to-do" title="Things to do">Schedule</a></li> --}}
 						</ul>
 					</nav>
 					<!--//inner navigation-->
@@ -120,13 +120,13 @@
 								<table>
 									<thead>
 										<th>Nama Hotel</th>
-										<th>Harga (/Pax)</th>
+										<th>Keterangan Hotel</th>
 									</thead>
 								<tbody>
 									@foreach ($p->hotel as $item)
 										<tr>
 											<td>{{$item->nama}}</td>
-											<td>Rp. {{number_format($item->harga)}}</td>
+											<td>Bintang {{$item->bintang}}</td>
 										</tr>
 									@endforeach
 								</tbody>
@@ -228,18 +228,7 @@
 						</article>
 					</section>
 					<!--things to do-->
-					<section id="things-to-do" class="tab-content">
-						@foreach ($p->aktivitas as $item)
-							{{-- expr --}}
-							<article>
-							<h1>{{$item->nama_aktivitas}} - Hari ke {{$item->hari_ke}}</h1>
-							
-							<p>{!! $item->keterangan !!}</p>
-							
-						</article>
-						@endforeach
-						
-					</section>
+					
 					<!--//things to do-->
 				</section>
 				<!--//hotel content-->
@@ -262,7 +251,6 @@
 					<article class="default clearfix">
 						<h2>Need Help Booking?</h2>
 						<p>Call our customer services team on the number below to speak to one of our advisors who will help you with all of your holiday needs.</p>
-						<p class="number">1- 555 - 555 - 555</p>
 					</article>
 					<!--//Need Help Booking?-->
 					
