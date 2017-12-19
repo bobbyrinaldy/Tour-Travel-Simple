@@ -31,7 +31,7 @@
           <tr>
             <th>No</th>
             <th>Nama Aktivitas</th>
-            <th>Harga /Pax</th>
+            <th>Bintang Hotel</th>
             <th style="text-align:center;">Action</th>
           </tr>
         </thead>
@@ -44,7 +44,7 @@
             <tr>
               <td>{{ $no++ }}</td>
               <td>{{ $item->nama }}</td>
-              <td>Rp. {{ number_format($item->harga) }}</td>
+              <td>{{ $item->bintang }}</td>
               <td width="10%" style="text-align:center;">
                 <a href="/admin/paket/hotel/{{$paket->id}}/{{$item->id}}/edit" class="btn btn-warning btn-xs btn-simple" data-toggle="tooltip" data-placement="top" title="Edit"><span class="fa fa-pencil"></span></a>
                 <a href="/admin/paket/hotel/{{$paket->id}}/{{$item->id}}/delete" class="btn btn-danger btn-xs btn-simple" data-toggle="tooltip" data-placement="top" title="Hapus"><span class="fa fa-trash"></span></a>

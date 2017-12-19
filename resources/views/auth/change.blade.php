@@ -3,9 +3,9 @@
 @section('content')
 <center>
   @if (\Session::get('success'))
-  <pre>{{\Session::get('success')}}</pre>
+  <pre style="color: green"><b>{{\Session::get('success')}}</b></pre>
   @elseif (\Session::get('fail'))
-  <pre>{{\Session::get('fail')}}</pre>
+  <pre style="color: red"><b>{{\Session::get('fail')}}</b></pre>
   @endif
 </center>
 

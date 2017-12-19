@@ -5,7 +5,7 @@
 
   <div class="x_panel">
            <div class="x_title">
-             <h2>Form Aktivitas</h2>
+             <h2>Form Hotel</h2>
              <div class="clearfix"></div>
            </div>
            <div class="x_content">
@@ -31,12 +31,20 @@
                </div>
 
                <div class="form-group">
+                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nama">Bintang Hotel <span class="required">*</span>
+                 </label>
+                 <div class="col-md-6 col-sm-6 col-xs-12">
+                   <input type="number" id="bintang" name="bintang" required="required" class="form-control col-md-7 col-xs-12" max="5" maxlength="1">
+                 </div>
+               </div>
+
+               {{-- <div class="form-group">
                  <label for="harga" class="control-label col-md-3 col-sm-3 col-xs-12">Harga /Pax (Rp.)</label>
                  <div class="col-md-6 col-sm-6 col-xs-12">
                    <input id="show_harga" class="form-control col-md-7 col-xs-12" type="text" name="" placeholder="0">
                    <input id="harga" class="form-control col-md-7 col-xs-12" type="hidden" name="harga" placeholder="0" onkeydown="return n(event)">
                  </div>
-               </div>
+               </div> --}}
 
                <div class="ln_solid"></div>
                <div class="form-group">

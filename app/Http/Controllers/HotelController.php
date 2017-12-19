@@ -38,6 +38,7 @@ class HotelController extends Controller
       $h->package_id = $request->paket_id;
       $h->nama = $request->nama;
       $h->harga = $request->harga;
+      $h->bintang = $request->bintang;
 
       $h->save();
 
